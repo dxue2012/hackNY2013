@@ -17,7 +17,7 @@ function getnews($cat = "usa") {
 		}	
 	}
 		
-	$response = substr($response, 0, -1);
+	$response = substr($response, 0, -2);
 	$response = $response." ] }";
 	return $response;
 }
