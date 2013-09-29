@@ -8,23 +8,14 @@
 The Shorten URL: 
 <?php 
 
-function bit_ly_short_url($url, $format='txt') {
-    $login = "amitavpaul";
+function getnews($nofarticle) {
     $appkey = "74d2a5411e162025164e146920413e92b8b65b45";
-	$format = "txt";
-    $bitly_api = 'https://api-ssl.bitly.com/v3/shorten?access_token='.$appkey.'&longUrl='.urlencode($url).'&format='.$format;
-    $ch = curl_init();
-    curl_setopt($ch,CURLOPT_URL,$bitly_api);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,5);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
+	$bitly_api = 'https://api-ssl.bitly.com/v3/highvalue?access_token='.$appkey.'&limit='.$nofarticle;
+    $response = file_get_contents($bitly_api);
+    return $response;
 }
 
-
-$long_url = "http://google.com";
-echo bit_ly_short_url($long_url);
+echo getnews(5);
 
 ?>	
 </div>    
