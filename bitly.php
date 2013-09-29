@@ -8,17 +8,17 @@ function getnews($nofarticle) {
     $response = file_get_contents($hv_api);
 	$data = json_decode($response, TRUE);
 	foreach($data['data']['values'] as $item) {
-		print $item."\n";
+		print $item."<br>";
 		$info_api = 'https://api-ssl.bitly.com/v3/link/info?access_token='.$appkey.'&link='.urlencode($item);
 		$i = file_get_contents($info_api);
 		$info = json_decode($i, TRUE);
-		print $info['data']['original_url']."\n";
-		print $info['data']['html_title']."\n";
+		print $info['data']['url']."<br>";
+		print $info['data']['html_title']."<br>";
 		
 		$content_api = 'https://api-ssl.bitly.com/v3/link/content?access_token='.$appkey.'&link='.urlencode($item);
 		$c = file_get_contents($content_api);
 		$content = json_decode($c, TRUE);
-		print $content['data']['content']."\n";
+		print $content['data']['content']."<br>";
 	}
 	
 	return $response;
