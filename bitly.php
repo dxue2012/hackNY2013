@@ -9,15 +9,17 @@ function getnews($nofarticle) {
 	$data = json_decode($response, TRUE);
 	foreach($data['data']['values'] as $item) {
 		print $item."<br>";
-		echo $info_api = 'https://api-ssl.bitly.com/v3/link/info?access_token='.$appkey.'&link='.urlencode($item);
+		$info_api = 'https://api-ssl.bitly.com/v3/link/info?access_token='.$appkey.'&link='.urlencode($item);
 		$i = file_get_contents($info_api);
 		$info = json_decode($i, TRUE);
+		echo $info;
 		print $info['data']['canonical_url']."<br>";
 		print $info['data']['html_title']."<br>";
 		
 		echo $content_api = 'https://api-ssl.bitly.com/v3/link/content?access_token='.$appkey.'&link='.urlencode($item);
 		$c = file_get_contents($content_api);
 		$content = json_decode($c, TRUE);
+		echo $content;
 		print $content['data']['content']."<br>";
 	}
 	
