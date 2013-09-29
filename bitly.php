@@ -21,8 +21,8 @@ function getnews($nofarticle) {
 		$content = json_decode($c, TRUE);
 		print $content['data']['content']."<br>";
 		
-		print $info;
-		print $content;
+		print_r( $info);
+		print_r( $content);
 		print "<br>_______________________________________________________<br>";
 	}
 	
