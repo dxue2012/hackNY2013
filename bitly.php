@@ -14,6 +14,7 @@ function getnews($nofarticle) {
 		$content_api = 'https://api-ssl.bitly.com/v3/link/content?access_token='.$appkey.'&link='.urlencode($item);
 		$c = file_get_contents($content_api);
 		$content = json_decode($c, TRUE);
+		print_r($content);
 		if( strcmp( $content['status_txt'], 'OK' )  == 0 ){
 				
 			$response = $response."{ \"bitly_link\" : \"".$item."\", ";
