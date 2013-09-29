@@ -65,7 +65,7 @@ function getnews($cat = "usa") {
 	$response = "{ \"data\" : [ ";
 	if( strcmp( $sr_data['status_txt'], 'OK' )  == 0 ){
 		foreach($sr_data['data']['results'] as $item) {
-			$response = $response."{ \"aggregate_link\" : \"".$item['aggregate_link']."\", \"title\" : \"".$item['title']."\", \"content\" : \"".$item['content']."\" }, ";
+			$response = $response."{ \"aggregate_link\" : \"".$item['aggregate_link']."\", \"title\" : \"".$item['title']."\", \"content\" : \"".str_replace('"', '\"', $item['content'])."\" }, ";
 		}	
 	}
 		
