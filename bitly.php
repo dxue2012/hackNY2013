@@ -26,7 +26,11 @@ function getnews($nofarticle) {
 			//print $info['data']['html_title']."<br>";
 			$response = $response."\"title\" : \"".$info['data']['html_title']."\", ";
 			//print $content['data']['content']."<br>";
-			$response = $response."\"content\" : \"".$content['data']['content']."\"";
+			
+			$notag = strip_tags($content['data']['content']);
+			$s = preg_replace("/\s+/", " ", $notag);
+			
+			$response = $response."\"content\" : \"".$s."\"";
 			
 			//echo $info_api;
 			//echo $content_api;
@@ -36,6 +40,8 @@ function getnews($nofarticle) {
 			$response = $response." },";
 		}
 	}
+	
+	$response = substr($response, 0, -1);
 	$response = $response." ] }";
 	return $response;
 }
