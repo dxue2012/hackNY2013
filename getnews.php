@@ -9,8 +9,9 @@ function getnews($nofarticle) {
 	$ncat2 = 4;
 	$nhv = 5;
 	
-	$search1_api = 'https://api-ssl.bitly.com/v3/search?access_token='.$appkey.'&query='.$cat1.'&limit='.$ncat1.'&fields=aggregate_link%2Ctitle%2CsummaryText';
-    $sr1 = file_get_contents($search1_api);
+	$search1_api = 'https://api-ssl.bitly.com/v3/search?access_token='.$appkey.'&query='.$cat1.'&limit='.$ncat1.'&fields=aggregate_link%2Ctitle%2Ccontent';
+    echo "<br>Search API: ".$search1_api."<br>";
+	$sr1 = file_get_contents($search1_api);
 	$sr1_data = json_decode($sr1, TRUE);
 	$response = "{ \"data\" : [ ";
 	if( strcmp( $sr1_data['status_txt'], 'OK' )  == 0 ){
@@ -19,7 +20,7 @@ function getnews($nofarticle) {
 		}	
 	}
 	
-	$search2_api = 'https://api-ssl.bitly.com/v3/search?access_token='.$appkey.'&query='.$cat2.'&limit='.$ncat2.'&fields=aggregate_link%2Ctitle%2CsummaryText';
+	$search2_api = 'https://api-ssl.bitly.com/v3/search?access_token='.$appkey.'&query='.$cat2.'&limit='.$ncat2.'&fields=aggregate_link%2Ctitle%2Ccontent';
     $sr2 = file_get_contents($search2_api);
 	$sr2_data = json_decode($sr2, TRUE);
 	if( strcmp( $sr2_data['status_txt'], 'OK' )  == 0 ){
