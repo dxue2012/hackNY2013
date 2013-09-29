@@ -3,7 +3,7 @@
 $cat1 = $_REQUEST['cat1'];
 $cat2 = $_REQUEST['cat2'];
 
-function getnews($nofarticle) {
+function getnews($cat1 = "usa", $cat2 = "newyork") {
     $appkey = "c2633a3d944ea8e2372ba7d40389d8a80b0bae86";
 	$ncat1 = 4;
 	$ncat2 = 4;
@@ -77,6 +77,6 @@ function getnews($nofarticle) {
 	return $response;
 }
 
-echo getnews(10);
+echo getnews($cat1, $cat2);
 
 ?>	
