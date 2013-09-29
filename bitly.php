@@ -28,7 +28,14 @@ function getnews($nofarticle) {
 			//print $content['data']['content']."<br>";
 			
 			$notag = strip_tags($content['data']['content']);
-			$s = preg_replace("/\s+/", " ", $notag);
+			//$s = preg_replace("/\s+/", " ", $notag);
+			
+			//Remove duplicate newlines
+			$s = preg_replace("/[\n]*/", "\n", $notag); 
+			//Preserves newlines while replacing the other whitspaces with single space
+			$s = preg_replace("/[ \t]*/", " ", $s); 
+			
+			$s = str_replace('"', '\"', $s);
 			
 			$response = $response."\"content\" : \"".$s."\"";
 			
