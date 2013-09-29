@@ -59,7 +59,7 @@ function getnews($cat = "usa") {
 	$ncat = 10;
 	
 	$search_api = 'https://api-ssl.bitly.com/v3/search?access_token='.$appkey.'&query='.$cat.'&limit='.$ncat.'&fields=aggregate_link%2Ctitle%2Ccontent';
-    echo "<br>Search API: ".$search_api."<br>";
+    //echo "<br>Search API: ".$search_api."<br>";
 	$sr = file_get_contents($search_api);
 	$sr_data = json_decode($sr, TRUE);
 	$response = "{ \"data\" : [ ";
