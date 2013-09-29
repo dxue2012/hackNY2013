@@ -7,14 +7,14 @@ function getnews($nofarticle) {
 	$hv_api = 'https://api-ssl.bitly.com/v3/highvalue?access_token='.$appkey.'&limit='.$nofarticle;
     $hv = file_get_contents($hv_api);
 	$data = json_decode($hv, TRUE);
-	$response = "{"\"data\" : [ ";
+	$response = "{ \"data\" : [ ";
 	
 	foreach($data['data']['values'] as $item) {
 		
 		$content_api = 'https://api-ssl.bitly.com/v3/link/content?access_token='.$appkey.'&link='.urlencode($item);
 		$c = file_get_contents($content_api);
 		$content = json_decode($c, TRUE);
-		if( strcmp( $content['status_text'], 'OK' )  == 0 ){
+		if( strcmp( $content['status_txt'], 'OK' )  == 0 ){
 				
 			$response = $response."{ \"bitly_link\" : \"".$item."\", ";
 			
