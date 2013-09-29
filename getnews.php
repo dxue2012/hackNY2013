@@ -15,7 +15,7 @@ function getnews($nofarticle) {
 	$response = "{ \"data\" : [ ";
 	if( strcmp( $sr1_data['status_txt'], 'OK' )  == 0 ){
 		foreach($sr1_data['data']['results'] as $item) {
-			$response = $response.$item.", ";
+			$response = $response."{ \"aggregate_link\" : \"".$item['aggregate_link']."\", \"title\" : \"".$item['title']."\", \"content\" : \"".$item['content']."\" }, ";
 		}	
 	}
 	
@@ -24,7 +24,7 @@ function getnews($nofarticle) {
 	$sr2_data = json_decode($sr2, TRUE);
 	if( strcmp( $sr2_data['status_txt'], 'OK' )  == 0 ){
 		foreach($sr2_data['data']['results'] as $item) {
-			$response = $response.$item.", ";
+			$response = $response."{ \"aggregate_link\" : \"".$item['aggregate_link']."\", \"title\" : \"".$item['title']."\", \"content\" : \"".$item['content']."\" }, ";
 		}	
 	}
 	
