@@ -3,7 +3,7 @@
 function gethvnews($nofarticle) {
     $appkey = "c2633a3d944ea8e2372ba7d40389d8a80b0bae86";
 	$hv_api = 'https://api-ssl.bitly.com/v3/highvalue?access_token='.$appkey.'&limit='.$nofarticle;
-    echo "<br>HV API: ".$hv_api."<br>";
+    //echo "<br>HV API: ".$hv_api."<br>";
 	$hv = file_get_contents($hv_api);
 	$data = json_decode($hv, TRUE);
 	$response = "{ \"data\" : [ ";
@@ -87,7 +87,7 @@ else
 				echo gethvnews(15);
 			}
 			else{
-				echo getnews($cat);
+				echo getnews(urlencode($cat));
 			}
 		}
 		else{
