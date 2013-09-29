@@ -3,7 +3,7 @@
 $num_of_articles = $_REQUEST['num_of_articles'];
 
 function getnews($nofarticle) {
-    $appkey = "74d2a5411e162025164e146920413e92b8b65b45";
+    $appkey = "c2633a3d944ea8e2372ba7d40389d8a80b0bae86";
 	$hv_api = 'https://api-ssl.bitly.com/v3/highvalue?access_token='.$appkey.'&limit='.$nofarticle;
     $hv = file_get_contents($hv_api);
 	$data = json_decode($hv, TRUE);
@@ -14,7 +14,7 @@ function getnews($nofarticle) {
 		$content_api = 'https://api-ssl.bitly.com/v3/link/content?access_token='.$appkey.'&link='.urlencode($item);
 		$c = file_get_contents($content_api);
 		$content = json_decode($c, TRUE);
-		print_r($content);
+		//print_r($content);
 		if( strcmp( $content['status_txt'], 'OK' )  == 0 ){
 				
 			$response = $response."{ \"bitly_link\" : \"".$item."\", ";
@@ -34,8 +34,8 @@ function getnews($nofarticle) {
 			
 			//echo $info_api;
 			//echo $content_api;
-			print_r( $info);
-			print_r( $content);
+			//print_r( $info);
+			//print_r( $content);
 			//print "<br>_______________________________________________________<br>";
 			$response = $response." },";
 		}
