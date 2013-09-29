@@ -22,8 +22,7 @@ function getnews($nofarticle) {
 			$i = file_get_contents($info_api);
 			$info = json_decode($i, TRUE);
 			
-			//print $item."<br>";
-			//print $info['data']['html_title']."<br>";
+			
 			$response = $response."\"title\" : \"".$info['data']['html_title']."\", ";
 			//print $content['data']['content']."<br>";
 			
@@ -34,8 +33,8 @@ function getnews($nofarticle) {
 			
 			//echo $info_api;
 			//echo $content_api;
-			//print_r( $info);
-			//print_r( $content);
+			print_r( $info);
+			print_r( $content);
 			//print "<br>_______________________________________________________<br>";
 			$response = $response." },";
 		}
